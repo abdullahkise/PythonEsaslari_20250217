@@ -3,7 +3,7 @@
 <head><meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>3_6_TekrarSorulari</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>4_4_PackageModuleKavrami</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 
 
 
@@ -15103,7 +15103,53 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
     </script>
     <!-- End of mathjax configuration --></head>
 <body class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">
-<div  class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+
+<div  class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Package-ve-Module-Olu%C5%9Fturmak,-%C3%87al%C4%B1%C5%9Fma-Ortam%C4%B1na-Almak">Package ve Module Olu&#351;turmak, &#199;al&#305;&#351;ma Ortam&#305;na Almak<a class="anchor-link" href="#Package-ve-Module-Olu%C5%9Fturmak,-%C3%87al%C4%B1%C5%9Fma-Ortam%C4%B1na-Almak">&#182;</a></h2><ul>
+<li>paketler <code>sys.path</code> ile belirtilen yollarda olursa <code>import</code> ile çalışma ortamına alınabilir.</li>
+<li><code>sys.path.append(&quot;yol&quot;)</code> ile yeni yollar ekleyebiliyoruz.</li>
+<li>import edilen paketlerde değişiklik olursa <code>importlib.reload(module)</code> ile güncel tanımları ortama alabiliriz.</li>
+<li>Paket yüklemek ve kaldırmak için gerekli komutlar:</li>
+</ul>
+<div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>pakeAdi,paketAdi2
+pip<span class="w"> </span>uninstall<span class="w"> </span>paketAdi
+
+pip<span class="w"> </span>list
+pip<span class="w"> </span>show<span class="w"> </span>paketAdi
+</pre></div>
+<ul>
+<li>paketi çalışma ortamına almak için:</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">paketAdi</span>
+<span class="kn">import</span> <span class="nn">paketAdi</span> <span class="k">as</span> <span class="nn">takmaAd</span>
+
+<span class="kn">from</span> <span class="nn">paket</span> <span class="kn">import</span> <span class="n">module</span><span class="o">.</span><span class="n">module</span>
+
+<span class="c1">#__all__ nesnesi ile belirtilen paket nesneleri yüklenir.</span>
+<span class="c1">#Bu tanım __init__.py dosyalarında yer alır.</span>
+<span class="kn">from</span> <span class="nn">paket</span> <span class="kn">import</span> <span class="o">*</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+</div>
+<div  class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="Python'%C4%B1n-Dikkate-Ald%C4%B1%C4%9F%C4%B1-Yollar-ve-Yeni-Yol-Ekleme">Python'&#305;n Dikkate Ald&#305;&#287;&#305; Yollar ve Yeni Yol Ekleme<a class="anchor-link" href="#Python'%C4%B1n-Dikkate-Ald%C4%B1%C4%9F%C4%B1-Yollar-ve-Yeni-Yol-Ekleme">&#182;</a></h3>
+</div>
+</div>
+</div>
+</div><div  class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -15111,16 +15157,12 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[2]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Soru1:</span>
-<span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">    Bir metin içerisindeki belirttiğimiz harfi saydıran bir kod parçası yazalım.</span>
-<span class="sd">&#39;&#39;&#39;</span>
-<span class="n">metin</span> <span class="o">=</span> <span class="s2">&quot;Python programlama dili, dünyada eğitim amacıyla en çok kullanılan programlama dillerinden biridir.&quot;</span>
-<span class="n">harf</span> <span class="o">=</span> <span class="s2">&quot;a&quot;</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
 
-
-<span class="c1">#----</span>
-<span class="n">metin</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">)</span> <span class="c1">#count containerlarda eleman saydıran bir fonksiyon.</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="c1">#çalışma yolu</span>
+<span class="c1">#</span>
+<span class="c1">#sys.path.append(&quot;yol&quot;) #yeni yol eklenebilir.</span>
 </pre></div>
 
      </div>
@@ -15142,13 +15184,29 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 
 
 <div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
-<pre>13</pre>
+<pre>&#39;c:\\Users\\Abdullah\\Documents\\GitHub\\PythonEsaslari_20250217\\Gun4&#39;</pre>
 </div>
 
 </div>
 
 </div>
 
+</div>
+
+</div><div  class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[3]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">custom_paket_yolu</span> <span class="o">=</span> <span class="s2">&quot;py_custom_package&quot;</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
 </div>
 
 </div><div  class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
@@ -15156,36 +15214,97 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[4]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Soru2:</span>
-<span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">    Belirtilen sayılardan 3&#39;e (istenen sayıya) tam bölünenlerin adedini, toplamını ve sayıların kendisini döndüren bir fonksiyon yazalım.</span>
-<span class="sd">&#39;&#39;&#39;</span>
-<span class="c1">#varsayılan değerli parametreler sınırsız sayıda değer alan parametrelerden önce olacak şekilde en sona yazılır.</span>
-<span class="k">def</span> <span class="nf">fnk</span><span class="p">(</span><span class="n">bolen</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span><span class="o">*</span><span class="n">sayilar</span><span class="p">):</span>
-    <span class="n">sayilar</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">sayilar</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
 
-    <span class="c1">#</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">bolen</span><span class="si">=}</span><span class="se">\n</span><span class="si">{</span><span class="n">sayilar</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="c1">#</span>
+<span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">custom_paket_yolu</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
-    <span class="c1">#</span>
-    <span class="c1">#1.list comprehension</span>
-    <span class="n">kalansizBolunenler</span><span class="o">=</span><span class="p">[</span><span class="n">s</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">sayilar</span> <span class="k">if</span> <span class="n">s</span><span class="o">%</span><span class="k">bolen</span>==0]
+<span class="c1">#</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span><span class="si">}</span><span class="se">\\</span><span class="si">{</span><span class="n">custom_paket_yolu</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span> <span class="c1">#sys.path[0]</span>
 
-    <span class="c1">#2. filter</span>
-    <span class="n">kalansizBolunenler</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">s</span><span class="p">:</span><span class="n">s</span><span class="o">%</span><span class="k">bolen</span>==0, sayilar)) #liste olarak istiyordu
+<span class="c1">#</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
 
-    <span class="c1">#</span>
-    <span class="k">return</span> <span class="p">{</span>
-            <span class="s2">&quot;toplam&quot;</span><span class="p">:</span><span class="nb">sum</span><span class="p">(</span><span class="n">kalansizBolunenler</span><span class="p">),</span>
-            <span class="s2">&quot;adet&quot;</span><span class="p">:</span><span class="nb">len</span><span class="p">(</span><span class="n">kalansizBolunenler</span><span class="p">),</span>
-            <span class="s2">&quot;liste&quot;</span><span class="p">:</span><span class="n">kalansizBolunenler</span>
-    <span class="p">}</span>
+     </div>
+</div>
+</div>
+</div>
 
-<span class="c1">#--------------</span>
-<span class="n">fnk</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">43</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">1321</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">54</span><span class="p">,</span><span class="mi">16</span><span class="p">,</span><span class="mi">32</span><span class="p">)</span>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[4]:</div>
+
+
+
+
+<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
+<pre>&#39;c:\\Users\\Abdullah\\Documents\\GitHub\\PythonEsaslari_20250217\\Gun4\\py_custom_package&#39;</pre>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+<div  class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="Module-Olu%C5%9Ftral%C4%B1m-ve-Import-Edelim">Module Olu&#351;tral&#305;m ve Import Edelim<a class="anchor-link" href="#Module-Olu%C5%9Ftral%C4%B1m-ve-Import-Edelim">&#182;</a></h3><ul>
+<li>package = folder</li>
+<li>module ~ .py</li>
+<li>Oluşturacağımız paket yapısı:<ul>
+<li>py_custom_package<ul>
+<li><code>__init__.py</code> direkt import edildiğinde ortama yüklenecek nesneler burada olur.</li>
+<li><code>renkler.py</code></li>
+<li><code>sekiller.py</code></li>
+<li><code>yazarlar.py</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+<div  class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h4 id="__init__.py-dosyas%C4%B1n%C4%B1n-i%C3%A7eri%C4%9Fini"><code>__init__.py</code> dosyas&#305;n&#305;n i&#231;eri&#287;ini<a class="anchor-link" href="#__init__.py-dosyas%C4%B1n%C4%B1n-i%C3%A7eri%C4%9Fini">&#182;</a></h4>
+</div>
+</div>
+</div>
+</div><div  class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[5]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%writefile</span> $custom_paket_yolu/__init__.py
+<span class="k">def</span> <span class="nf">BoyamaHakkinda</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;renkler ve şekiller kullanarak boyama yapabilirsiniz.&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Boyamayı eglenceli hale getirdik.&quot;</span><span class="p">)</span>
 </pre></div>
 
      </div>
@@ -15205,23 +15324,10 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>bolen=4
-sayilar={32, 1, 3, 4, 5, 6, 1321, 43, 16, 54}
+<pre>Writing py_custom_package/__init__.py
 </pre>
 </div>
 </div>
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[&nbsp;]:</div>
-
-
-
-
-<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
-<pre>{&#39;toplam&#39;: 52, &#39;adet&#39;: 3, &#39;liste&#39;: [32, 4, 16]}</pre>
-</div>
-
-</div>
 
 </div>
 
@@ -15232,238 +15338,15 @@ sayilar={32, 1, 3, 4, 5, 6, 1321, 43, 16, 54}
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[15]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[6]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Soru3:</span>
-<span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">    Dışarıdan yarıçapı girilen dairenin alanını hesaplayan bir fonksiyon yazalım.</span>
-<span class="sd">    hata kontrollerini de yapalım.</span>
-<span class="sd">    Dairenin Alanı = pi * r^2</span>
-<span class="sd">&#39;&#39;&#39;</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">py_custom_package</span> <span class="k">as</span> <span class="nn">cp</span>
 
-<span class="kn">import</span> <span class="nn">math</span>
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Union</span> <span class="c1">#type hinting, fonksiyona tip bilgisi vermek için</span>
-
-<span class="k">def</span> <span class="nf">daire_alan</span><span class="p">(</span><span class="n">r</span><span class="p">:</span><span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">float</span><span class="p">]:</span>
-    <span class="k">if</span> <span class="ow">not</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">))):</span>
-        <span class="k">return</span> <span class="s2">&quot;Yarı çap sayısal değer olmalı.&quot;</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="k">if</span> <span class="n">r</span><span class="o">&lt;</span><span class="mi">0</span><span class="p">:</span>
-            <span class="k">return</span> <span class="s2">&quot;Yarı çap negatif olamaz.&quot;</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="k">return</span> <span class="n">math</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">r</span><span class="o">**</span><span class="mi">2</span> <span class="c1">#pow, math.pow</span>
-        
-<span class="c1">#---------------</span>
-<span class="n">daire_alan</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="nb">dir</span><span class="p">(</span><span class="n">cp</span><span class="p">)</span>
 
 <span class="c1">#</span>
-<span class="n">alan</span> <span class="o">=</span> <span class="n">daire_alan</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
-
-<span class="c1">#</span>
-<span class="nb">round</span><span class="p">(</span><span class="n">alan</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>  <span class="c1">#numeric döner</span>
-<span class="nb">format</span><span class="p">(</span><span class="n">alan</span><span class="p">,</span><span class="s2">&quot;.2f&quot;</span><span class="p">)</span> <span class="c1">#str</span>
-<span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">alan</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span> <span class="c1">#str</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[15]:</div>
-
-
-
-
-<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
-<pre>&#39;78.54&#39;</pre>
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div><div  class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Soru4:</span>
-<span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">    Verilen metni alfabe dışındaki karekterlerden temizleyelim. Metni düz ve tersten veren bir fonksiyon yazalım</span>
-<span class="sd">&#39;&#39;&#39;</span>
-
-<span class="k">def</span> <span class="nf">fnk_temizle</span><span class="p">(</span><span class="n">metin</span><span class="p">):</span>
-    <span class="c1">#1. list comp.</span>
-    <span class="n">temizMetin</span> <span class="o">=</span> <span class="p">[</span><span class="n">m</span> <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">metin</span> <span class="k">if</span> <span class="n">m</span><span class="o">.</span><span class="n">isalpha</span><span class="p">()</span> <span class="ow">or</span> <span class="n">m</span><span class="o">.</span><span class="n">isspace</span><span class="p">()]</span>
-
-    <span class="c1">#--</span>
-    <span class="c1">#2.filter</span>
-    <span class="n">temizMetin</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">filter</span><span class="p">(</span><span class="nb">str</span><span class="o">.</span><span class="n">isalpha</span> <span class="ow">or</span> <span class="nb">str</span><span class="o">.</span><span class="n">isspace</span><span class="p">,</span> <span class="n">metin</span><span class="p">))</span>
-
-    <span class="c1">#---------------------------</span>
-    <span class="c1">#liste elemanlarını birleştirelim.</span>
-    <span class="n">temizMetin</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">temizMetin</span><span class="p">)</span>
-
-    <span class="k">return</span> <span class="n">temizMetin</span><span class="p">,</span> <span class="n">temizMetin</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="c1">#step -1 ile ters çevirebiliriz.</span>
-    <span class="c1">#temizMetin.reverse() orjinalini etiler.</span>
-
-<span class="c1">#</span>
-<span class="c1">#--------------------------------</span>
-<span class="n">fnk_temizle</span><span class="p">(</span><span class="s2">&quot;s23na?lu!bma&quot;</span><span class="p">)</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[&nbsp;]:</div>
-
-
-
-
-<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
-<pre>(&#39;snalubma&#39;, &#39;ambulans&#39;)</pre>
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div><div  class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># soru5:</span>
-<span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">    Dışarıdan girilen tarih. hangi güne ait.</span>
-<span class="sd">&#39;&#39;&#39;</span>
-
-<span class="c1">#from datetime import datetime #datetime paketi içerisindeki datetime modulunu import et. </span>
-<span class="kn">import</span> <span class="nn">datetime</span> <span class="c1">#datetime paketini impport edelim. datetime klasorundeki ___init__.py dosyasına bakılacak.</span>
-
-<span class="c1">#</span>
-<span class="n">str_tarih</span> <span class="o">=</span> <span class="s2">&quot;20/02/2025&quot;</span> <span class="c1">#input(&quot;Tarihi giriniz (GG/AA/YYYY): &quot;)</span>
-
-<span class="c1">#\ ile kodları bitirmedim aşağıdaki satırlardan devam edeceğimiz demiş oluyor.</span>
-<span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span> \
-        <span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="n">str_tarih</span><span class="p">,</span> <span class="s2">&quot;</span><span class="si">%d</span><span class="s2">/%m/%Y&quot;</span><span class="p">)</span> \
-        <span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%A&quot;</span><span class="p">)</span>
-
-
-<span class="c1">#veya () kullanılabilir</span>
-<span class="p">(</span>
-<span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span> 
-        <span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="n">str_tarih</span><span class="p">,</span> <span class="s2">&quot;</span><span class="si">%d</span><span class="s2">/%m/%Y&quot;</span><span class="p">)</span> 
-        <span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%A&quot;</span><span class="p">)</span>
-<span class="p">)</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[&nbsp;]:</div>
-
-
-
-
-<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
-<pre>&#39;Thursday&#39;</pre>
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div><div  class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># soru6: Sezar Şifrelemesi</span>
-<span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">    chr(97) #ascii kod alır karakteri verir.</span>
-<span class="sd">    ord(&quot;a&quot;) #karakter alır ascii kodu verir.</span>
-<span class="sd">    </span>
-<span class="sd">    kaydirmaMiktarı (anahtar)</span>
-<span class="sd">    temizMetin</span>
-<span class="sd">    sifreliMetin</span>
-<span class="sd">    </span>
-<span class="sd">    ord(&quot;a&quot;) #97</span>
-<span class="sd">    ord(&quot;z&quot;) #122</span>
-<span class="sd">    ord(&quot;A&quot;) #65</span>
-<span class="sd">    ord(&quot;Z&quot;) #90</span>
-
-<span class="sd">&#39;&#39;&#39;</span>
-<span class="c1">#alafabedki harfler</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="nb">chr</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">65</span><span class="p">,</span> <span class="mi">91</span><span class="p">)]))</span>
-
-<span class="c1">#-----------------------------</span>
-<span class="k">def</span> <span class="nf">fnk_sezar</span><span class="p">(</span><span class="n">metin</span><span class="p">,</span> <span class="n">anahtar</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="n">sifrelensinMi</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-    <span class="n">sonuc</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
-
-    <span class="c1">#1. açık for</span>
-    <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">metin</span><span class="p">:</span>
-        <span class="n">sonuc</span><span class="o">+=</span><span class="nb">chr</span><span class="p">(</span><span class="nb">ord</span><span class="p">(</span><span class="n">m</span><span class="p">)</span><span class="o">+</span><span class="n">anahtar</span><span class="p">)</span> <span class="k">if</span> <span class="n">sifrelensinMi</span> <span class="k">else</span> <span class="nb">chr</span><span class="p">(</span><span class="nb">ord</span><span class="p">(</span><span class="n">m</span><span class="p">)</span><span class="o">-</span><span class="n">anahtar</span><span class="p">)</span>
-
-    <span class="c1">#2. list comp</span>
-    <span class="n">sonuc</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="nb">chr</span><span class="p">(</span><span class="nb">ord</span><span class="p">(</span><span class="n">m</span><span class="p">)</span><span class="o">+</span><span class="n">anahtar</span><span class="p">)</span> <span class="k">if</span> <span class="n">sifrelensinMi</span> <span class="k">else</span> <span class="nb">chr</span><span class="p">(</span><span class="nb">ord</span><span class="p">(</span><span class="n">m</span><span class="p">)</span><span class="o">-</span><span class="n">anahtar</span><span class="p">)</span> <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">metin</span><span class="p">])</span>
-    
-    <span class="c1">#3. map ile</span>
-    <span class="n">sonuc</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">m</span><span class="p">:</span> <span class="nb">chr</span><span class="p">(</span><span class="nb">ord</span><span class="p">(</span><span class="n">m</span><span class="p">)</span><span class="o">+</span><span class="n">anahtar</span><span class="p">)</span> <span class="k">if</span> <span class="n">sifrelensinMi</span> <span class="k">else</span> <span class="nb">chr</span><span class="p">(</span><span class="nb">ord</span><span class="p">(</span><span class="n">m</span><span class="p">)</span><span class="o">-</span><span class="n">anahtar</span><span class="p">)</span> <span class="p">,</span> <span class="n">metin</span><span class="p">))</span>
-
-    <span class="k">return</span> <span class="n">sonuc</span>
-
-<span class="c1">#---------------------</span>
-<span class="n">fnk_sezar</span><span class="p">(</span><span class="s2">&quot;Abdullah&quot;</span><span class="p">)</span>
-<span class="n">fnk_sezar</span><span class="p">(</span><span class="s2">&quot;Degxoodk&quot;</span><span class="p">,</span><span class="n">sifrelensinMi</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-
-<span class="c1">#</span>
-<span class="n">fnk_sezar</span><span class="p">(</span><span class="s2">&quot;Degxoodk&quot;</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span> <span class="c1">#doğru anahtar</span>
+<span class="n">cp</span><span class="o">.</span><span class="n">BoyamaHakkinda</span><span class="p">()</span>
 </pre></div>
 
      </div>
@@ -15483,22 +15366,11 @@ sayilar={32, 1, 3, 4, 5, 6, 1321, 43, 16, 54}
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>ABCDEFGHIJKLMNOPQRSTUVWXYZ
+<pre>renkler ve şekiller kullanarak boyama yapabilirsiniz.
+Boyamayı eglenceli hale getirdik.
 </pre>
 </div>
 </div>
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[&nbsp;]:</div>
-
-
-
-
-<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
-<pre>&#39;Abdullah&#39;</pre>
-</div>
-
-</div>
 
 </div>
 
@@ -15509,57 +15381,17 @@ sayilar={32, 1, 3, 4, 5, 6, 1321, 43, 16, 54}
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[7]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># soru7: </span>
-<span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">cm olarak girilen boy bilgisine bakılarak ideal kilo hesabı yapalım.</span>
-<span class="sd">Boy bilgisini floata dönüşecek mi diye kontrol edelim.</span>
-<span class="sd">idealkilo  = boy-100-(boy-150)/4</span>
-<span class="sd">&#39;&#39;&#39;</span>
-<span class="c1">#dışarıdan gelenler str&#39;edir str olan float&#39;a dönüşebilir mi?</span>
-<span class="k">def</span> <span class="nf">isFloat</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
-    <span class="k">try</span><span class="p">:</span>
-        <span class="nb">float</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
-    <span class="k">except</span><span class="p">:</span>
-        <span class="k">return</span> <span class="kc">False</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="k">return</span> <span class="kc">True</span>
-    
-<span class="c1">#-----------------</span>
-<span class="k">def</span> <span class="nf">fnk_ideal_kilo</span><span class="p">(</span><span class="n">cmBoy</span><span class="p">:</span><span class="nb">float</span><span class="p">)</span><span class="o">-&gt;</span><span class="nb">float</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        cm cinsinden boy bilgisi giriniz.</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%writefile</span> $custom_paket_yolu/__init__.py
+<span class="k">def</span> <span class="nf">BoyamaHakkinda</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;renkler ve şekiller kullanarak boyama yapabilirsiniz.&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Boyamayı eglenceli hale getirdik.&quot;</span><span class="p">)</span>
 
-<span class="sd">        formul:</span>
-<span class="sd">        idealkilo  = boy-100-(boy-150)/4</span>
-
-<span class="sd">        Parametreler:</span>
-<span class="sd">        --------------------------------</span>
-<span class="sd">        cmBoy: cm cinsinden boyunuz</span>
-<span class="sd">        return: hesaplanana ideal kilo</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-
-    <span class="k">if</span> <span class="n">isFloat</span><span class="p">(</span><span class="n">cmBoy</span><span class="p">):</span>
-        <span class="n">cmBoy</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">cmBoy</span><span class="p">)</span>
-
-        <span class="c1">#</span>
-        <span class="k">if</span> <span class="ow">not</span><span class="p">(</span><span class="mi">50</span><span class="o">&lt;=</span><span class="n">cmBoy</span><span class="o">&lt;=</span><span class="mi">300</span><span class="p">):</span>
-            <span class="k">return</span> <span class="s2">&quot;Boy bilgisi 50-300 arasında olmalıdır.&quot;</span>
-        
-        <span class="c1">#her şey yolunda</span>
-        <span class="n">idealkilo</span>  <span class="o">=</span> <span class="n">cmBoy</span><span class="o">-</span><span class="mi">100</span><span class="o">-</span><span class="p">(</span><span class="n">cmBoy</span><span class="o">-</span><span class="mi">150</span><span class="p">)</span><span class="o">/</span><span class="mi">4</span>
-        <span class="k">return</span> <span class="n">idealkilo</span>
-    
-    <span class="k">else</span><span class="p">:</span>
-        <span class="c1">#raise TypeError(&quot;Boy bilgisi float olmalıdır.&quot;)</span>
-        <span class="k">return</span> <span class="s2">&quot;Boy bilgisi float olmalıdır.&quot;</span>
-
-<span class="c1">#------------------------------</span>
-<span class="n">fnk_ideal_kilo</span><span class="p">(</span><span class="mi">175</span><span class="p">)</span>
-<span class="n">fnk_ideal_kilo</span><span class="p">(</span><span class="s2">&quot;175&quot;</span><span class="p">)</span>
-<span class="n">fnk_ideal_kilo</span><span class="p">(</span><span class="s2">&quot;1.7.5&quot;</span><span class="p">)</span> <span class="c1">#floata dönüşmez.</span>
+<span class="c1">#--------</span>
+<span class="k">def</span> <span class="nf">selamVer</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;merhaba dünyalı&quot;</span><span class="p">)</span>
 </pre></div>
 
      </div>
@@ -15573,15 +15405,15 @@ sayilar={32, 1, 3, 4, 5, 6, 1321, 43, 16, 54}
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+<div class="jp-OutputArea-child">
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[&nbsp;]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
 
-
-
-<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
-<pre>&#39;Boy bilgisi float olmalıdır.&#39;</pre>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>Overwriting py_custom_package/__init__.py
+</pre>
+</div>
 </div>
 
 </div>
@@ -15589,52 +15421,212 @@ sayilar={32, 1, 3, 4, 5, 6, 1321, 43, 16, 54}
 </div>
 
 </div>
-
+<div  class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h4 id="importlib.reload-ile-de%C4%9Fi%C5%9Fiklileri-yans%C4%B1tal%C4%B1m"><code>importlib.reload</code> ile de&#287;i&#351;iklileri yans&#305;tal&#305;m<a class="anchor-link" href="#importlib.reload-ile-de%C4%9Fi%C5%9Fiklileri-yans%C4%B1tal%C4%B1m">&#182;</a></h4>
+</div>
+</div>
+</div>
 </div><div  class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[61]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[9]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># soru8:</span>
-<span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">    Aşağıdaki metni dict&#39;e çevirelim. plaka kodu verildiğinde ili getiren fonksiyonu yazalım</span>
-<span class="sd">&#39;&#39;&#39;</span>
-
-<span class="n">plakaKodlar</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
-<span class="s2">İstanbul 34</span>
-<span class="s2">Ankara 06</span>
-
-<span class="s2">Adana 01</span>
-<span class="s2">Çorum 19</span>
-<span class="s2">Sakarya 54</span>
-<span class="s2">&quot;&quot;&quot;</span>
-
-<span class="c1">#-----------------</span>
-<span class="n">plakaKodlar</span><span class="o">.</span><span class="n">split</span><span class="p">()</span> <span class="c1">#whitespace göre parçalama yapar. hem alt satır hem boşluk için</span>
-<span class="n">plakaKodlar</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span> <span class="c1">#satır sonu</span>
-<span class="n">plakaKodlar</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()</span> <span class="c1">#newline karakterlerine göre 13 karakter var.</span>
-<span class="c1">#----------------------------------</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">importlib</span>
+<span class="n">importlib</span><span class="o">.</span><span class="n">reload</span><span class="p">(</span><span class="n">cp</span><span class="p">)</span>
 
 <span class="c1">#</span>
-<span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">[p for p in plakaKodlar.splitlines() if p] #boş strler False olarak değerlendirilir.</span>
-<span class="sd">list(filter(bool,plakaKodlar.splitlines())) #aynı şey. boş olan bool(&#39;&#39;) False üretir.</span>
-<span class="sd">&#39;&#39;&#39;</span>
-<span class="c1">#---</span>
-<span class="c1">#dictler gelen ikililerin ilki key ikincisi valu olarak kullanır.</span>
-<span class="c1">#-----------------</span>
-<span class="k">def</span> <span class="nf">fnk_plaka_getir</span><span class="p">(</span><span class="n">plaka</span><span class="p">:</span><span class="nb">str</span><span class="p">)</span><span class="o">-&gt;</span><span class="nb">str</span><span class="p">:</span>
-    <span class="n">veriPlaka</span> <span class="o">=</span> <span class="p">[</span><span class="n">p</span><span class="o">.</span><span class="n">split</span><span class="p">()[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="nb">filter</span><span class="p">(</span><span class="nb">bool</span><span class="p">,</span><span class="n">plakaKodlar</span><span class="o">.</span><span class="n">splitlines</span><span class="p">())]</span>
-    <span class="n">dictPlaka</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">veriPlaka</span><span class="p">)</span>
+<span class="nb">dir</span><span class="p">(</span><span class="n">cp</span><span class="p">)</span>
+<span class="n">cp</span><span class="o">.</span><span class="n">selamVer</span><span class="p">()</span>
+</pre></div>
 
-    <span class="k">return</span> <span class="n">dictPlaka</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">plaka</span><span class="p">,</span><span class="s2">&quot;Plaka Mevcut Değil&quot;</span><span class="p">)</span>
+     </div>
+</div>
+</div>
+</div>
 
-<span class="c1">#---------------------</span>
-<span class="n">fnk_plaka_getir</span><span class="p">(</span><span class="s2">&quot;34&quot;</span><span class="p">)</span>
-<span class="n">fnk_plaka_getir</span><span class="p">(</span><span class="s2">&quot;340&quot;</span><span class="p">)</span>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>merhaba dünyalı
+</pre>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+<div  class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h4 id="from....-import-...-kullan%C4%B1m%C4%B1"><code>from.... import ...</code> kullan&#305;m&#305;<a class="anchor-link" href="#from....-import-...-kullan%C4%B1m%C4%B1">&#182;</a></h4>
+</div>
+</div>
+</div>
+</div><div  class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[10]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%writefile</span> $custom_paket_yolu\\renkler.py
+<span class="n">renk_paleti</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="s2">&quot;sulu&quot;</span><span class="p">:[</span><span class="s2">&quot;yeşil&quot;</span><span class="p">,</span><span class="s2">&quot;mor&quot;</span><span class="p">,</span><span class="s2">&quot;mavi&quot;</span><span class="p">],</span>
+                <span class="s2">&quot;pastel&quot;</span><span class="p">:</span><span class="s2">&quot;kırmızı&quot;</span>
+<span class="p">}</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>Writing py_custom_package\\renkler.py
+</pre>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div><div  class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[11]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%writefile</span> $custom_paket_yolu\\sekiller.py
+<span class="n">sekiller_paleti</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;kare&quot;</span><span class="p">,</span><span class="s2">&quot;daire&quot;</span><span class="p">,</span><span class="s2">&quot;üçgen&quot;</span><span class="p">]</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>Writing py_custom_package\\sekiller.py
+</pre>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div><div  class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[12]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%writefile</span> $custom_paket_yolu\\yazarlar.py
+<span class="n">isimler</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Ali&quot;</span><span class="p">,</span><span class="s2">&quot;Veli&quot;</span><span class="p">,</span><span class="s2">&quot;Ayşe&quot;</span><span class="p">]</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>Writing py_custom_package\\yazarlar.py
+</pre>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div><div  class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[13]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">py_custom_package</span> <span class="kn">import</span> <span class="n">renkler</span><span class="p">,</span> <span class="n">sekiller</span> <span class="c1">#istediğimiz modulleri yükleyebiliriz.</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div><div  class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[14]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">dir</span><span class="p">(</span><span class="n">renkler</span><span class="p">)</span>
+<span class="nb">dir</span><span class="p">(</span><span class="n">sekiller</span><span class="p">)</span>
 </pre></div>
 
      </div>
@@ -15650,13 +15642,21 @@ sayilar={32, 1, 3, 4, 5, 6, 1321, 43, 16, 54}
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[61]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[14]:</div>
 
 
 
 
 <div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
-<pre>&#39;Plaka Mevcut Değil&#39;</pre>
+<pre>[&#39;__builtins__&#39;,
+ &#39;__cached__&#39;,
+ &#39;__doc__&#39;,
+ &#39;__file__&#39;,
+ &#39;__loader__&#39;,
+ &#39;__name__&#39;,
+ &#39;__package__&#39;,
+ &#39;__spec__&#39;,
+ &#39;sekiller_paleti&#39;]</pre>
 </div>
 
 </div>
@@ -15670,25 +15670,16 @@ sayilar={32, 1, 3, 4, 5, 6, 1321, 43, 16, 54}
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[16]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Soru 9:</span>
-<span class="c1"># fonksiyona verilen sayılardan sadece tekrar edenleri bulalım.</span>
-<span class="k">def</span> <span class="nf">tekrarliSayilar</span><span class="p">(</span><span class="o">*</span><span class="n">sayilar</span><span class="p">):</span>
-    <span class="n">tekrarEdenler</span> <span class="o">=</span> <span class="p">[]</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">dir</span><span class="p">(</span><span class="n">cp</span><span class="p">)</span>
 
-    <span class="c1">#1.yöntem</span>
-    <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">sayilar</span><span class="p">:</span>
-        <span class="k">if</span> <span class="n">sayilar</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">s</span><span class="p">)</span><span class="o">&gt;</span><span class="mi">1</span><span class="p">:</span>
-            <span class="n">tekrarEdenler</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
-    
-    <span class="c1">#2. yöntem</span>
-    <span class="nb">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">s</span><span class="p">:</span> <span class="n">sayilar</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">s</span><span class="p">)</span><span class="o">&gt;</span><span class="mi">1</span><span class="p">,</span> <span class="n">sayilar</span><span class="p">)</span>
-    <span class="k">return</span> <span class="nb">set</span><span class="p">(</span><span class="n">tekrarEdenler</span><span class="p">)</span>
+<span class="c1">#reload yapılmalı.</span>
+<span class="c1">#importlib.reload(cp)</span>
 
-<span class="c1">#---------------</span>
-<span class="n">tekrarliSayilar</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">78</span><span class="p">,</span><span class="mi">9</span><span class="p">)</span>
+<span class="n">cp</span><span class="o">.</span><span class="n">renkler</span><span class="o">.</span><span class="n">renk_paleti</span>
+<span class="n">cp</span><span class="o">.</span><span class="n">sekiller</span><span class="o">.</span><span class="n">sekiller_paleti</span>
 </pre></div>
 
      </div>
@@ -15704,13 +15695,13 @@ sayilar={32, 1, 3, 4, 5, 6, 1321, 43, 16, 54}
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[&nbsp;]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[16]:</div>
 
 
 
 
 <div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
-<pre>{3, 4, 6}</pre>
+<pre>[&#39;kare&#39;, &#39;daire&#39;, &#39;üçgen&#39;]</pre>
 </div>
 
 </div>
@@ -15719,28 +15710,74 @@ sayilar={32, 1, 3, 4, 5, 6, 1321, 43, 16, 54}
 
 </div>
 
+</div>
+<div  class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h4 id="from-...-import-*-kullan%C4%B1m%C4%B1"><code>from ... import *</code> kullan&#305;m&#305;<a class="anchor-link" href="#from-...-import-*-kullan%C4%B1m%C4%B1">&#182;</a></h4>
+</div>
+</div>
+</div>
 </div><div  class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[72]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[17]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Soru 10:</span>
-<span class="c1"># bir listedeki sayılara bakıp, 1-10 arasındaki sayılardan hangileri eksikmiş bulalım.</span>
-<span class="k">def</span> <span class="nf">fnk_eksikSayilar</span><span class="p">(</span><span class="n">lst</span><span class="p">:</span> <span class="nb">list</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
-    <span class="c1">#1. ymntem</span>
-    <span class="n">sonuc</span><span class="o">=</span> <span class="p">[</span><span class="n">r</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">11</span><span class="p">)</span> <span class="k">if</span> <span class="n">r</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">lst</span><span class="p">]</span> <span class="c1">#lst.__contains__()</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%writefile</span> $custom_paket_yolu/__init__.py
+<span class="k">def</span> <span class="nf">BoyamaHakkinda</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;renkler ve şekiller kullanarak boyama yapabilirsiniz.&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Boyamayı eglenceli hale getirdik.&quot;</span><span class="p">)</span>
 
-    <span class="c1">#2.yöntem</span>
-    <span class="n">sonuc</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">r</span><span class="p">:</span><span class="n">r</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">lst</span><span class="p">,</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">11</span><span class="p">)))</span> <span class="c1">#lambda r:r not in lst</span>
-
-    <span class="c1">#</span>
-    <span class="k">return</span> <span class="n">sonuc</span>
+<span class="c1">#--------</span>
+<span class="k">def</span> <span class="nf">selamVer</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;merhaba dünyalı&quot;</span><span class="p">)</span>
 
 <span class="c1">#---------</span>
-<span class="n">fnk_eksikSayilar</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">5445</span><span class="p">,</span><span class="mi">65</span><span class="p">,</span><span class="mi">76</span><span class="p">])</span>
+<span class="c1">#from ... import * kullandığımız __all__ ile belirtilen moduller ortama alınır</span>
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;renkler&quot;</span><span class="p">,</span> <span class="s2">&quot;sekiller&quot;</span><span class="p">,</span> <span class="s2">&quot;yazarlar&quot;</span><span class="p">]</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>Overwriting py_custom_package/__init__.py
+</pre>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div><div  class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[18]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">importlib</span><span class="o">.</span><span class="n">reload</span><span class="p">(</span><span class="n">cp</span><span class="p">)</span>
 </pre></div>
 
      </div>
@@ -15756,13 +15793,13 @@ sayilar={32, 1, 3, 4, 5, 6, 1321, 43, 16, 54}
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[72]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[18]:</div>
 
 
 
 
 <div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
-<pre>[3, 5, 6, 9, 10]</pre>
+<pre>&lt;module &#39;py_custom_package&#39; from &#39;c:\\Users\\Abdullah\\Documents\\GitHub\\PythonEsaslari_20250217\\Gun4\\py_custom_package\\__init__.py&#39;&gt;</pre>
 </div>
 
 </div>
@@ -15776,26 +15813,13 @@ sayilar={32, 1, 3, 4, 5, 6, 1321, 43, 16, 54}
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[79]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[19]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#soru 11:</span>
-<span class="c1"># Bir cümledeki en uzun kelimeyi getiren fonksiyonu yazalım.</span>
-<span class="n">cumle</span> <span class="o">=</span> <span class="s2">&quot;Python programlama dili oldukça popüler bir dil haline geldi.&quot;</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">py_custom_package</span> <span class="kn">import</span> <span class="o">*</span> <span class="c1">#__all__ ile belirtilen moduller</span>
 
-<span class="c1">#</span>
-<span class="n">lst_kelimeler</span> <span class="o">=</span> <span class="n">cumle</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
-
-<span class="c1">#1.</span>
-<span class="nb">max</span><span class="p">(</span><span class="n">lst_kelimeler</span><span class="p">)</span>
-
-<span class="c1">#2.</span>
-<span class="n">lst_kelimeler</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="nb">len</span><span class="p">)</span> <span class="c1">#sıralama fonksiyonu belirtilebilir. mesela içinde geçen a sayına göre sırala diyebilir.</span>
-<span class="n">lst_kelimeler</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-
-<span class="c1">#3.</span>
-<span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">reduce</span>
-<span class="n">reduce</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">:</span> <span class="n">x</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">&gt;</span><span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="k">else</span> <span class="n">y</span> <span class="p">,</span> <span class="n">lst_kelimeler</span><span class="p">)</span>
+<span class="nb">dir</span><span class="p">(</span><span class="n">cp</span><span class="p">)</span>
+<span class="n">cp</span><span class="o">.</span><span class="n">yazarlar</span><span class="o">.</span><span class="n">isimler</span>
 </pre></div>
 
      </div>
@@ -15811,13 +15835,271 @@ sayilar={32, 1, 3, 4, 5, 6, 1321, 43, 16, 54}
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[79]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[19]:</div>
 
 
 
 
 <div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
-<pre>&#39;programlama&#39;</pre>
+<pre>[&#39;Ali&#39;, &#39;Veli&#39;, &#39;Ayşe&#39;]</pre>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+<div  class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="Paket-i%C3%A7erisindeki-kodlar-diretk-%C3%A7al%C4%B1%C5%9Ft%C4%B1r%C4%B1l%C4%B1rsa-ne-olsun?">Paket i&#231;erisindeki kodlar diretk &#231;al&#305;&#351;t&#305;r&#305;l&#305;rsa ne olsun?<a class="anchor-link" href="#Paket-i%C3%A7erisindeki-kodlar-diretk-%C3%A7al%C4%B1%C5%9Ft%C4%B1r%C4%B1l%C4%B1rsa-ne-olsun?">&#182;</a></h3>
+</div>
+</div>
+</div>
+</div><div  class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[20]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">cp</span><span class="o">.</span><span class="vm">__name__</span> <span class="c1">#hangi paket ait olduğunu belirtir.</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[20]:</div>
+
+
+
+
+<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
+<pre>&#39;py_custom_package&#39;</pre>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div><div  class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[21]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="vm">__name__</span> <span class="c1">#aktif olarak çalışılan yerde bu değişken __main__ metninş döndürür</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[21]:</div>
+
+
+
+
+<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
+<pre>&#39;__main__&#39;</pre>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div><div  class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[22]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%writefile</span> $custom_paket_yolu/__init__.py
+<span class="k">def</span> <span class="nf">BoyamaHakkinda</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;renkler ve şekiller kullanarak boyama yapabilirsiniz.&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Boyamayı eglenceli hale getirdik.&quot;</span><span class="p">)</span>
+
+<span class="c1">#--------</span>
+<span class="k">def</span> <span class="nf">selamVer</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;merhaba dünyalı&quot;</span><span class="p">)</span>
+
+<span class="c1">#---------</span>
+<span class="c1">#from ... import * kullandığımız __all__ ile belirtilen moduller ortama alınır</span>
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;renkler&quot;</span><span class="p">,</span> <span class="s2">&quot;sekiller&quot;</span><span class="p">,</span> <span class="s2">&quot;yazarlar&quot;</span><span class="p">]</span>
+
+<span class="c1">#--------</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span> <span class="c1">#biri doğrudan __init__.py dosyasını çalışıyorsak</span>
+    <span class="n">selamVer</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Kodları direkt çalıştırdınız. Aslında bu başka bir yerden çağırılacak bir pakettir.&quot;</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>Overwriting py_custom_package/__init__.py
+</pre>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+<div  class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="Help">Help<a class="anchor-link" href="#Help">&#182;</a></h3>
+</div>
+</div>
+</div>
+</div><div  class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[39]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#help(cp)</span>
+
+<span class="c1">#</span>
+
+<span class="n">cp</span><span class="o">.</span><span class="vm">__doc__</span> <span class="o">=</span> <span class="s2">&quot;Sonradan helpe eklenebilir.&quot;</span>
+<span class="c1">#cp.__doc__</span>
+
+<span class="c1">#</span>
+<span class="n">help</span><span class="p">(</span><span class="n">cp</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>Help on package py_custom_package:
+
+NAME
+    py_custom_package - Sonradan helpe eklenebilir.
+
+PACKAGE CONTENTS
+    renkler
+    sekiller
+    yazarlar
+
+DATA
+    __all__ = [&#39;renkler&#39;, &#39;sekiller&#39;, &#39;yazarlar&#39;]
+
+FILE
+    c:\users\abdullah\documents\github\pythonesaslari_20240304\gun4\py_custom_package\__init__.py
+
+
+</pre>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div><div  class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[23]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">cp</span><span class="o">.</span><span class="n">renkler</span><span class="o">.</span><span class="n">__package__</span> <span class="c1">#hangi pakette py_custom_package</span>
+<span class="n">cp</span><span class="o">.</span><span class="n">renkler</span><span class="o">.</span><span class="vm">__name__</span> <span class="c1">#modulun adını, yolunu py_custom_package.renkler</span>
+
+<span class="c1">#</span>
+<span class="n">cp</span><span class="o">.</span><span class="vm">__file__</span> <span class="c1">#dosya yolu</span>
+<span class="n">cp</span><span class="o">.</span><span class="n">__all__</span> <span class="c1">#* ile import edileckeleri verir</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[23]:</div>
+
+
+
+
+<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
+<pre>[&#39;renkler&#39;, &#39;sekiller&#39;, &#39;yazarlar&#39;]</pre>
 </div>
 
 </div>

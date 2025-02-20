@@ -3,7 +3,7 @@
 <head><meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>3_6_TekrarSorulari</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>4_2_Decorator_Kullanimi</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 
 
 
@@ -15103,131 +15103,26 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
     </script>
     <!-- End of mathjax configuration --></head>
 <body class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">
-<div  class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+
+<div  class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[2]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Soru1:</span>
-<span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">    Bir metin içerisindeki belirttiğimiz harfi saydıran bir kod parçası yazalım.</span>
-<span class="sd">&#39;&#39;&#39;</span>
-<span class="n">metin</span> <span class="o">=</span> <span class="s2">&quot;Python programlama dili, dünyada eğitim amacıyla en çok kullanılan programlama dillerinden biridir.&quot;</span>
-<span class="n">harf</span> <span class="o">=</span> <span class="s2">&quot;a&quot;</span>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Decorator-Kullan%C4%B1m%C4%B1">Decorator Kullan&#305;m&#305;<a class="anchor-link" href="#Decorator-Kullan%C4%B1m%C4%B1">&#182;</a></h2><ul>
+<li>Veritabanındaki triggerlara benzetebiliriz</li>
+<li>Mesela bir fonksiyon çalıştırmak isteyelim.<ul>
+<li>Fonksiyondan önce ve sonra bir takım işlemler yapmak isteyebiliriz.</li>
+<li>Fonksiyon yerine bir işlem yapmak isteyebiliriz.</li>
+</ul>
+</li>
+</ul>
 
-
-<span class="c1">#----</span>
-<span class="n">metin</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">)</span> <span class="c1">#count containerlarda eleman saydıran bir fonksiyon.</span>
-</pre></div>
-
-     </div>
 </div>
 </div>
 </div>
-
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[2]:</div>
-
-
-
-
-<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
-<pre>13</pre>
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div><div  class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Soru2:</span>
-<span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">    Belirtilen sayılardan 3&#39;e (istenen sayıya) tam bölünenlerin adedini, toplamını ve sayıların kendisini döndüren bir fonksiyon yazalım.</span>
-<span class="sd">&#39;&#39;&#39;</span>
-<span class="c1">#varsayılan değerli parametreler sınırsız sayıda değer alan parametrelerden önce olacak şekilde en sona yazılır.</span>
-<span class="k">def</span> <span class="nf">fnk</span><span class="p">(</span><span class="n">bolen</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span><span class="o">*</span><span class="n">sayilar</span><span class="p">):</span>
-    <span class="n">sayilar</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">sayilar</span><span class="p">)</span>
-
-    <span class="c1">#</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">bolen</span><span class="si">=}</span><span class="se">\n</span><span class="si">{</span><span class="n">sayilar</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
-
-    <span class="c1">#</span>
-    <span class="c1">#1.list comprehension</span>
-    <span class="n">kalansizBolunenler</span><span class="o">=</span><span class="p">[</span><span class="n">s</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">sayilar</span> <span class="k">if</span> <span class="n">s</span><span class="o">%</span><span class="k">bolen</span>==0]
-
-    <span class="c1">#2. filter</span>
-    <span class="n">kalansizBolunenler</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">s</span><span class="p">:</span><span class="n">s</span><span class="o">%</span><span class="k">bolen</span>==0, sayilar)) #liste olarak istiyordu
-
-    <span class="c1">#</span>
-    <span class="k">return</span> <span class="p">{</span>
-            <span class="s2">&quot;toplam&quot;</span><span class="p">:</span><span class="nb">sum</span><span class="p">(</span><span class="n">kalansizBolunenler</span><span class="p">),</span>
-            <span class="s2">&quot;adet&quot;</span><span class="p">:</span><span class="nb">len</span><span class="p">(</span><span class="n">kalansizBolunenler</span><span class="p">),</span>
-            <span class="s2">&quot;liste&quot;</span><span class="p">:</span><span class="n">kalansizBolunenler</span>
-    <span class="p">}</span>
-
-<span class="c1">#--------------</span>
-<span class="n">fnk</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">43</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">1321</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">54</span><span class="p">,</span><span class="mi">16</span><span class="p">,</span><span class="mi">32</span><span class="p">)</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>bolen=4
-sayilar={32, 1, 3, 4, 5, 6, 1321, 43, 16, 54}
-</pre>
-</div>
-</div>
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[&nbsp;]:</div>
-
-
-
-
-<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
-<pre>{&#39;toplam&#39;: 52, &#39;adet&#39;: 3, &#39;liste&#39;: [32, 4, 16]}</pre>
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div><div  class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+</div><div  class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -15235,35 +15130,23 @@ sayilar={32, 1, 3, 4, 5, 6, 1321, 43, 16, 54}
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[15]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Soru3:</span>
-<span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">    Dışarıdan yarıçapı girilen dairenin alanını hesaplayan bir fonksiyon yazalım.</span>
-<span class="sd">    hata kontrollerini de yapalım.</span>
-<span class="sd">    Dairenin Alanı = pi * r^2</span>
-<span class="sd">&#39;&#39;&#39;</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">decorator_loglayici</span><span class="p">(</span><span class="n">fnk</span><span class="p">):</span>
+    <span class="c1">#1.</span>
+    <span class="c1">#return fnk #decorator tarafından yakalanan fonksiyon dönsün.</span>
 
-<span class="kn">import</span> <span class="nn">math</span>
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Union</span> <span class="c1">#type hinting, fonksiyona tip bilgisi vermek için</span>
+    <span class="c1">#2.başka bir fonksiyon döndürelim</span>
+    <span class="c1">#return lambda : &quot;ben docoratorde tanımlı fonksiyondan geldim.&quot;</span>
 
-<span class="k">def</span> <span class="nf">daire_alan</span><span class="p">(</span><span class="n">r</span><span class="p">:</span><span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">float</span><span class="p">]:</span>
-    <span class="k">if</span> <span class="ow">not</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">))):</span>
-        <span class="k">return</span> <span class="s2">&quot;Yarı çap sayısal değer olmalı.&quot;</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="k">if</span> <span class="n">r</span><span class="o">&lt;</span><span class="mi">0</span><span class="p">:</span>
-            <span class="k">return</span> <span class="s2">&quot;Yarı çap negatif olamaz.&quot;</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="k">return</span> <span class="n">math</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">r</span><span class="o">**</span><span class="mi">2</span> <span class="c1">#pow, math.pow</span>
-        
-<span class="c1">#---------------</span>
-<span class="n">daire_alan</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+    <span class="c1">#------------------------</span>
+    <span class="c1">#3.</span>
+    <span class="k">def</span> <span class="nf">fnk_performansOlcumu</span><span class="p">():</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Loglama işlemi başlatılıyor....&quot;</span><span class="p">)</span>
+        <span class="c1">#----</span>
+        <span class="n">fnk</span><span class="p">()</span> <span class="c1">#fnk orjinal fonksiyondu bu da çalışsın.</span>
+        <span class="c1">#----</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Loglama işlemi tamamlandı!&quot;</span><span class="p">)</span>
 
-<span class="c1">#</span>
-<span class="n">alan</span> <span class="o">=</span> <span class="n">daire_alan</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
-
-<span class="c1">#</span>
-<span class="nb">round</span><span class="p">(</span><span class="n">alan</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>  <span class="c1">#numeric döner</span>
-<span class="nb">format</span><span class="p">(</span><span class="n">alan</span><span class="p">,</span><span class="s2">&quot;.2f&quot;</span><span class="p">)</span> <span class="c1">#str</span>
-<span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">alan</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span> <span class="c1">#str</span>
+    <span class="k">return</span> <span class="n">fnk_performansOlcumu</span>
 </pre></div>
 
      </div>
@@ -15271,60 +15154,17 @@ sayilar={32, 1, 3, 4, 5, 6, 1321, 43, 16, 54}
 </div>
 </div>
 
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[15]:</div>
-
-
-
-
-<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
-<pre>&#39;78.54&#39;</pre>
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div><div  class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+</div><div  class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[16]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Soru4:</span>
-<span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">    Verilen metni alfabe dışındaki karekterlerden temizleyelim. Metni düz ve tersten veren bir fonksiyon yazalım</span>
-<span class="sd">&#39;&#39;&#39;</span>
-
-<span class="k">def</span> <span class="nf">fnk_temizle</span><span class="p">(</span><span class="n">metin</span><span class="p">):</span>
-    <span class="c1">#1. list comp.</span>
-    <span class="n">temizMetin</span> <span class="o">=</span> <span class="p">[</span><span class="n">m</span> <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">metin</span> <span class="k">if</span> <span class="n">m</span><span class="o">.</span><span class="n">isalpha</span><span class="p">()</span> <span class="ow">or</span> <span class="n">m</span><span class="o">.</span><span class="n">isspace</span><span class="p">()]</span>
-
-    <span class="c1">#--</span>
-    <span class="c1">#2.filter</span>
-    <span class="n">temizMetin</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">filter</span><span class="p">(</span><span class="nb">str</span><span class="o">.</span><span class="n">isalpha</span> <span class="ow">or</span> <span class="nb">str</span><span class="o">.</span><span class="n">isspace</span><span class="p">,</span> <span class="n">metin</span><span class="p">))</span>
-
-    <span class="c1">#---------------------------</span>
-    <span class="c1">#liste elemanlarını birleştirelim.</span>
-    <span class="n">temizMetin</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">temizMetin</span><span class="p">)</span>
-
-    <span class="k">return</span> <span class="n">temizMetin</span><span class="p">,</span> <span class="n">temizMetin</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="c1">#step -1 ile ters çevirebiliriz.</span>
-    <span class="c1">#temizMetin.reverse() orjinalini etiler.</span>
-
-<span class="c1">#</span>
-<span class="c1">#--------------------------------</span>
-<span class="n">fnk_temizle</span><span class="p">(</span><span class="s2">&quot;s23na?lu!bma&quot;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nd">@decorator_loglayici</span> <span class="c1">#decorator fonksiyonu belirttik.</span>
+<span class="k">def</span> <span class="nf">istenenFonksiyon</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&gt;&gt;&gt; Merhaba ben istenen fonksiyonum &lt;&lt;&lt;&quot;</span><span class="p">)</span>
 </pre></div>
 
      </div>
@@ -15332,138 +15172,15 @@ sayilar={32, 1, 3, 4, 5, 6, 1321, 43, 16, 54}
 </div>
 </div>
 
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[&nbsp;]:</div>
-
-
-
-
-<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
-<pre>(&#39;snalubma&#39;, &#39;ambulans&#39;)</pre>
-</div>
-
-</div>
-
-</div>
-
-</div>
-
 </div><div  class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[17]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># soru5:</span>
-<span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">    Dışarıdan girilen tarih. hangi güne ait.</span>
-<span class="sd">&#39;&#39;&#39;</span>
-
-<span class="c1">#from datetime import datetime #datetime paketi içerisindeki datetime modulunu import et. </span>
-<span class="kn">import</span> <span class="nn">datetime</span> <span class="c1">#datetime paketini impport edelim. datetime klasorundeki ___init__.py dosyasına bakılacak.</span>
-
-<span class="c1">#</span>
-<span class="n">str_tarih</span> <span class="o">=</span> <span class="s2">&quot;20/02/2025&quot;</span> <span class="c1">#input(&quot;Tarihi giriniz (GG/AA/YYYY): &quot;)</span>
-
-<span class="c1">#\ ile kodları bitirmedim aşağıdaki satırlardan devam edeceğimiz demiş oluyor.</span>
-<span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span> \
-        <span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="n">str_tarih</span><span class="p">,</span> <span class="s2">&quot;</span><span class="si">%d</span><span class="s2">/%m/%Y&quot;</span><span class="p">)</span> \
-        <span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%A&quot;</span><span class="p">)</span>
-
-
-<span class="c1">#veya () kullanılabilir</span>
-<span class="p">(</span>
-<span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span> 
-        <span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="n">str_tarih</span><span class="p">,</span> <span class="s2">&quot;</span><span class="si">%d</span><span class="s2">/%m/%Y&quot;</span><span class="p">)</span> 
-        <span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%A&quot;</span><span class="p">)</span>
-<span class="p">)</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[&nbsp;]:</div>
-
-
-
-
-<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
-<pre>&#39;Thursday&#39;</pre>
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div><div  class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># soru6: Sezar Şifrelemesi</span>
-<span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">    chr(97) #ascii kod alır karakteri verir.</span>
-<span class="sd">    ord(&quot;a&quot;) #karakter alır ascii kodu verir.</span>
-<span class="sd">    </span>
-<span class="sd">    kaydirmaMiktarı (anahtar)</span>
-<span class="sd">    temizMetin</span>
-<span class="sd">    sifreliMetin</span>
-<span class="sd">    </span>
-<span class="sd">    ord(&quot;a&quot;) #97</span>
-<span class="sd">    ord(&quot;z&quot;) #122</span>
-<span class="sd">    ord(&quot;A&quot;) #65</span>
-<span class="sd">    ord(&quot;Z&quot;) #90</span>
-
-<span class="sd">&#39;&#39;&#39;</span>
-<span class="c1">#alafabedki harfler</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="nb">chr</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">65</span><span class="p">,</span> <span class="mi">91</span><span class="p">)]))</span>
-
-<span class="c1">#-----------------------------</span>
-<span class="k">def</span> <span class="nf">fnk_sezar</span><span class="p">(</span><span class="n">metin</span><span class="p">,</span> <span class="n">anahtar</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="n">sifrelensinMi</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-    <span class="n">sonuc</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
-
-    <span class="c1">#1. açık for</span>
-    <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">metin</span><span class="p">:</span>
-        <span class="n">sonuc</span><span class="o">+=</span><span class="nb">chr</span><span class="p">(</span><span class="nb">ord</span><span class="p">(</span><span class="n">m</span><span class="p">)</span><span class="o">+</span><span class="n">anahtar</span><span class="p">)</span> <span class="k">if</span> <span class="n">sifrelensinMi</span> <span class="k">else</span> <span class="nb">chr</span><span class="p">(</span><span class="nb">ord</span><span class="p">(</span><span class="n">m</span><span class="p">)</span><span class="o">-</span><span class="n">anahtar</span><span class="p">)</span>
-
-    <span class="c1">#2. list comp</span>
-    <span class="n">sonuc</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="nb">chr</span><span class="p">(</span><span class="nb">ord</span><span class="p">(</span><span class="n">m</span><span class="p">)</span><span class="o">+</span><span class="n">anahtar</span><span class="p">)</span> <span class="k">if</span> <span class="n">sifrelensinMi</span> <span class="k">else</span> <span class="nb">chr</span><span class="p">(</span><span class="nb">ord</span><span class="p">(</span><span class="n">m</span><span class="p">)</span><span class="o">-</span><span class="n">anahtar</span><span class="p">)</span> <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">metin</span><span class="p">])</span>
-    
-    <span class="c1">#3. map ile</span>
-    <span class="n">sonuc</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">m</span><span class="p">:</span> <span class="nb">chr</span><span class="p">(</span><span class="nb">ord</span><span class="p">(</span><span class="n">m</span><span class="p">)</span><span class="o">+</span><span class="n">anahtar</span><span class="p">)</span> <span class="k">if</span> <span class="n">sifrelensinMi</span> <span class="k">else</span> <span class="nb">chr</span><span class="p">(</span><span class="nb">ord</span><span class="p">(</span><span class="n">m</span><span class="p">)</span><span class="o">-</span><span class="n">anahtar</span><span class="p">)</span> <span class="p">,</span> <span class="n">metin</span><span class="p">))</span>
-
-    <span class="k">return</span> <span class="n">sonuc</span>
-
-<span class="c1">#---------------------</span>
-<span class="n">fnk_sezar</span><span class="p">(</span><span class="s2">&quot;Abdullah&quot;</span><span class="p">)</span>
-<span class="n">fnk_sezar</span><span class="p">(</span><span class="s2">&quot;Degxoodk&quot;</span><span class="p">,</span><span class="n">sifrelensinMi</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-
-<span class="c1">#</span>
-<span class="n">fnk_sezar</span><span class="p">(</span><span class="s2">&quot;Degxoodk&quot;</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span> <span class="c1">#doğru anahtar</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">istenenFonksiyon</span><span class="p">()</span> <span class="c1">#() ile decoratorden dönen fonksiyonu çalıştırdık.</span>
 </pre></div>
 
      </div>
@@ -15483,343 +15200,11 @@ sayilar={32, 1, 3, 4, 5, 6, 1321, 43, 16, 54}
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>ABCDEFGHIJKLMNOPQRSTUVWXYZ
+<pre>Loglama işlemi başlatılıyor....
+&gt;&gt;&gt; Merhaba ben istenen fonksiyonum &lt;&lt;&lt;
+Loglama işlemi tamamlandı!
 </pre>
 </div>
-</div>
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[&nbsp;]:</div>
-
-
-
-
-<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
-<pre>&#39;Abdullah&#39;</pre>
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div><div  class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># soru7: </span>
-<span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">cm olarak girilen boy bilgisine bakılarak ideal kilo hesabı yapalım.</span>
-<span class="sd">Boy bilgisini floata dönüşecek mi diye kontrol edelim.</span>
-<span class="sd">idealkilo  = boy-100-(boy-150)/4</span>
-<span class="sd">&#39;&#39;&#39;</span>
-<span class="c1">#dışarıdan gelenler str&#39;edir str olan float&#39;a dönüşebilir mi?</span>
-<span class="k">def</span> <span class="nf">isFloat</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
-    <span class="k">try</span><span class="p">:</span>
-        <span class="nb">float</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
-    <span class="k">except</span><span class="p">:</span>
-        <span class="k">return</span> <span class="kc">False</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="k">return</span> <span class="kc">True</span>
-    
-<span class="c1">#-----------------</span>
-<span class="k">def</span> <span class="nf">fnk_ideal_kilo</span><span class="p">(</span><span class="n">cmBoy</span><span class="p">:</span><span class="nb">float</span><span class="p">)</span><span class="o">-&gt;</span><span class="nb">float</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        cm cinsinden boy bilgisi giriniz.</span>
-
-<span class="sd">        formul:</span>
-<span class="sd">        idealkilo  = boy-100-(boy-150)/4</span>
-
-<span class="sd">        Parametreler:</span>
-<span class="sd">        --------------------------------</span>
-<span class="sd">        cmBoy: cm cinsinden boyunuz</span>
-<span class="sd">        return: hesaplanana ideal kilo</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-
-    <span class="k">if</span> <span class="n">isFloat</span><span class="p">(</span><span class="n">cmBoy</span><span class="p">):</span>
-        <span class="n">cmBoy</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">cmBoy</span><span class="p">)</span>
-
-        <span class="c1">#</span>
-        <span class="k">if</span> <span class="ow">not</span><span class="p">(</span><span class="mi">50</span><span class="o">&lt;=</span><span class="n">cmBoy</span><span class="o">&lt;=</span><span class="mi">300</span><span class="p">):</span>
-            <span class="k">return</span> <span class="s2">&quot;Boy bilgisi 50-300 arasında olmalıdır.&quot;</span>
-        
-        <span class="c1">#her şey yolunda</span>
-        <span class="n">idealkilo</span>  <span class="o">=</span> <span class="n">cmBoy</span><span class="o">-</span><span class="mi">100</span><span class="o">-</span><span class="p">(</span><span class="n">cmBoy</span><span class="o">-</span><span class="mi">150</span><span class="p">)</span><span class="o">/</span><span class="mi">4</span>
-        <span class="k">return</span> <span class="n">idealkilo</span>
-    
-    <span class="k">else</span><span class="p">:</span>
-        <span class="c1">#raise TypeError(&quot;Boy bilgisi float olmalıdır.&quot;)</span>
-        <span class="k">return</span> <span class="s2">&quot;Boy bilgisi float olmalıdır.&quot;</span>
-
-<span class="c1">#------------------------------</span>
-<span class="n">fnk_ideal_kilo</span><span class="p">(</span><span class="mi">175</span><span class="p">)</span>
-<span class="n">fnk_ideal_kilo</span><span class="p">(</span><span class="s2">&quot;175&quot;</span><span class="p">)</span>
-<span class="n">fnk_ideal_kilo</span><span class="p">(</span><span class="s2">&quot;1.7.5&quot;</span><span class="p">)</span> <span class="c1">#floata dönüşmez.</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[&nbsp;]:</div>
-
-
-
-
-<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
-<pre>&#39;Boy bilgisi float olmalıdır.&#39;</pre>
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div><div  class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[61]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># soru8:</span>
-<span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">    Aşağıdaki metni dict&#39;e çevirelim. plaka kodu verildiğinde ili getiren fonksiyonu yazalım</span>
-<span class="sd">&#39;&#39;&#39;</span>
-
-<span class="n">plakaKodlar</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
-<span class="s2">İstanbul 34</span>
-<span class="s2">Ankara 06</span>
-
-<span class="s2">Adana 01</span>
-<span class="s2">Çorum 19</span>
-<span class="s2">Sakarya 54</span>
-<span class="s2">&quot;&quot;&quot;</span>
-
-<span class="c1">#-----------------</span>
-<span class="n">plakaKodlar</span><span class="o">.</span><span class="n">split</span><span class="p">()</span> <span class="c1">#whitespace göre parçalama yapar. hem alt satır hem boşluk için</span>
-<span class="n">plakaKodlar</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span> <span class="c1">#satır sonu</span>
-<span class="n">plakaKodlar</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()</span> <span class="c1">#newline karakterlerine göre 13 karakter var.</span>
-<span class="c1">#----------------------------------</span>
-
-<span class="c1">#</span>
-<span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">[p for p in plakaKodlar.splitlines() if p] #boş strler False olarak değerlendirilir.</span>
-<span class="sd">list(filter(bool,plakaKodlar.splitlines())) #aynı şey. boş olan bool(&#39;&#39;) False üretir.</span>
-<span class="sd">&#39;&#39;&#39;</span>
-<span class="c1">#---</span>
-<span class="c1">#dictler gelen ikililerin ilki key ikincisi valu olarak kullanır.</span>
-<span class="c1">#-----------------</span>
-<span class="k">def</span> <span class="nf">fnk_plaka_getir</span><span class="p">(</span><span class="n">plaka</span><span class="p">:</span><span class="nb">str</span><span class="p">)</span><span class="o">-&gt;</span><span class="nb">str</span><span class="p">:</span>
-    <span class="n">veriPlaka</span> <span class="o">=</span> <span class="p">[</span><span class="n">p</span><span class="o">.</span><span class="n">split</span><span class="p">()[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="nb">filter</span><span class="p">(</span><span class="nb">bool</span><span class="p">,</span><span class="n">plakaKodlar</span><span class="o">.</span><span class="n">splitlines</span><span class="p">())]</span>
-    <span class="n">dictPlaka</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">veriPlaka</span><span class="p">)</span>
-
-    <span class="k">return</span> <span class="n">dictPlaka</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">plaka</span><span class="p">,</span><span class="s2">&quot;Plaka Mevcut Değil&quot;</span><span class="p">)</span>
-
-<span class="c1">#---------------------</span>
-<span class="n">fnk_plaka_getir</span><span class="p">(</span><span class="s2">&quot;34&quot;</span><span class="p">)</span>
-<span class="n">fnk_plaka_getir</span><span class="p">(</span><span class="s2">&quot;340&quot;</span><span class="p">)</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[61]:</div>
-
-
-
-
-<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
-<pre>&#39;Plaka Mevcut Değil&#39;</pre>
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div><div  class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Soru 9:</span>
-<span class="c1"># fonksiyona verilen sayılardan sadece tekrar edenleri bulalım.</span>
-<span class="k">def</span> <span class="nf">tekrarliSayilar</span><span class="p">(</span><span class="o">*</span><span class="n">sayilar</span><span class="p">):</span>
-    <span class="n">tekrarEdenler</span> <span class="o">=</span> <span class="p">[]</span>
-
-    <span class="c1">#1.yöntem</span>
-    <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">sayilar</span><span class="p">:</span>
-        <span class="k">if</span> <span class="n">sayilar</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">s</span><span class="p">)</span><span class="o">&gt;</span><span class="mi">1</span><span class="p">:</span>
-            <span class="n">tekrarEdenler</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
-    
-    <span class="c1">#2. yöntem</span>
-    <span class="nb">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">s</span><span class="p">:</span> <span class="n">sayilar</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">s</span><span class="p">)</span><span class="o">&gt;</span><span class="mi">1</span><span class="p">,</span> <span class="n">sayilar</span><span class="p">)</span>
-    <span class="k">return</span> <span class="nb">set</span><span class="p">(</span><span class="n">tekrarEdenler</span><span class="p">)</span>
-
-<span class="c1">#---------------</span>
-<span class="n">tekrarliSayilar</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">78</span><span class="p">,</span><span class="mi">9</span><span class="p">)</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[&nbsp;]:</div>
-
-
-
-
-<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
-<pre>{3, 4, 6}</pre>
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div><div  class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[72]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Soru 10:</span>
-<span class="c1"># bir listedeki sayılara bakıp, 1-10 arasındaki sayılardan hangileri eksikmiş bulalım.</span>
-<span class="k">def</span> <span class="nf">fnk_eksikSayilar</span><span class="p">(</span><span class="n">lst</span><span class="p">:</span> <span class="nb">list</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
-    <span class="c1">#1. ymntem</span>
-    <span class="n">sonuc</span><span class="o">=</span> <span class="p">[</span><span class="n">r</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">11</span><span class="p">)</span> <span class="k">if</span> <span class="n">r</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">lst</span><span class="p">]</span> <span class="c1">#lst.__contains__()</span>
-
-    <span class="c1">#2.yöntem</span>
-    <span class="n">sonuc</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">r</span><span class="p">:</span><span class="n">r</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">lst</span><span class="p">,</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">11</span><span class="p">)))</span> <span class="c1">#lambda r:r not in lst</span>
-
-    <span class="c1">#</span>
-    <span class="k">return</span> <span class="n">sonuc</span>
-
-<span class="c1">#---------</span>
-<span class="n">fnk_eksikSayilar</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">5445</span><span class="p">,</span><span class="mi">65</span><span class="p">,</span><span class="mi">76</span><span class="p">])</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[72]:</div>
-
-
-
-
-<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
-<pre>[3, 5, 6, 9, 10]</pre>
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div><div  class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[79]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#soru 11:</span>
-<span class="c1"># Bir cümledeki en uzun kelimeyi getiren fonksiyonu yazalım.</span>
-<span class="n">cumle</span> <span class="o">=</span> <span class="s2">&quot;Python programlama dili oldukça popüler bir dil haline geldi.&quot;</span>
-
-<span class="c1">#</span>
-<span class="n">lst_kelimeler</span> <span class="o">=</span> <span class="n">cumle</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
-
-<span class="c1">#1.</span>
-<span class="nb">max</span><span class="p">(</span><span class="n">lst_kelimeler</span><span class="p">)</span>
-
-<span class="c1">#2.</span>
-<span class="n">lst_kelimeler</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="nb">len</span><span class="p">)</span> <span class="c1">#sıralama fonksiyonu belirtilebilir. mesela içinde geçen a sayına göre sırala diyebilir.</span>
-<span class="n">lst_kelimeler</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-
-<span class="c1">#3.</span>
-<span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">reduce</span>
-<span class="n">reduce</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">:</span> <span class="n">x</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">&gt;</span><span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="k">else</span> <span class="n">y</span> <span class="p">,</span> <span class="n">lst_kelimeler</span><span class="p">)</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[79]:</div>
-
-
-
-
-<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
-<pre>&#39;programlama&#39;</pre>
-</div>
-
 </div>
 
 </div>
